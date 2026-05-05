@@ -1,0 +1,35 @@
+{
+  "name": "menu-generator",
+  "version": "0.1.0",
+  "description": "Marigolds and Cosmos - weekly menu generator (Vue + Cloudflare Workers + D1)",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "deploy": "npm run build && wrangler deploy",
+    "cf-typegen": "wrangler types",
+    "db:create": "wrangler d1 create menu-generator-db",
+    "db:migrate:local": "wrangler d1 migrations apply DB --local",
+    "db:migrate:remote": "wrangler d1 migrations apply DB --remote",
+    "db:studio:local": "wrangler d1 execute DB --local --command \"SELECT * FROM items;\""
+  },
+  "dependencies": {
+    "hono": "^4.12.15",
+    "html2canvas": "^1.4.1",
+    "jspdf": "^4.2.1",
+    "pinia": "^3.0.4",
+    "vue": "^3.5.33",
+    "vue-router": "^5.0.6"
+  },
+  "devDependencies": {
+    "@cloudflare/vite-plugin": "^1.33.2",
+    "@cloudflare/workers-types": "^4.20260425.1",
+    "@vitejs/plugin-vue": "^6.0.6",
+    "typescript": "^6.0.3",
+    "vite": "^8.0.10",
+    "vue-tsc": "^3.2.7",
+    "wrangler": "^4.85.0"
+  }
+}
